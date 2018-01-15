@@ -17,3 +17,7 @@
 * Chrome Browser (http://chrome.google.com )
 * Firefox Borwser (http://mozilla.com)
 
+## 참고 링크
+* Event Loop Visualizationg [http://latentflip.com/loupe]
+* [w3schools.com, javascript reference](https://www.w3schools.com/jsref/default.asp)
+
