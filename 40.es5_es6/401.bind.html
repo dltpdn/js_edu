@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var obj = {name: 'lee'};
+function f(){
+	return this.name;
+}
+f(); // undefined
+
+var obj_f = f.bind(obj);
+obj_f(); // 'lee'
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

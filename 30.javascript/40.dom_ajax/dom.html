@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+.my{
+	background-color: #0f0;
+	color : #ff0;
+}
+</style>
+<script type="text/javascript">
+function myclick(){
+	var div = document.getElementById("my");
+	console.log(div);
+	console.dir(div);
+	var id = div.getAttribute("id");
+	console.log(id);
+	console.log(div.id);
+	div.id = "your";
+	delete div.id;
+	
+	var style = div.getAttribute("style");
+	console.log(style);
+	console.log(div.style);
+	
+	div.removeAttribute("style");
+	div.setAttribute("style", "background-color:#f00");
+	div.style.backgroundColor = "#00f";
+	
+	div.myatt = "abc";
+	
+	var divs = document.getElementsByTagName("div");
+	console.log(divs);
+	console.dir(divs);
+	divs[1].setAttribute("style", "background:#0f0");
+	//divs[1].textContent = "<a href='http://www.google.com'>Google</a>";
+	divs[1].innerHTML = "<a href='http://www.google.com'>Google</a>"
+}
+
+function myclick3(event){
+	//console.log(this);
+	console.log(event);
+	var parent = document.getElementById("my2");
+	//var target = document.getElementById("btn1");
+	//target = event.target;
+	parent.removeChild(event.target);
+}
+var cnt=1;
+function myclick2(){
+	var btn = document.createElement('button');
+	btn.id = "btn" + cnt++;
+	//btn.setAttribute("onclick", "myclick3();");
+	btn.onclick = myclick3;
+	
+	btn.textContent = "new button";
+	btn.textContent = "my";
+	//var textNode = document.createTextNode("button");
+	//btn.appendChild(textNode);
+	//btn.appendChild(document.createTextNode(" my"));
+	
+	var div2 = document.getElementById("my2");
+	//div2.innerHTML = "<button>new button</button>";
+	div2.appendChild(btn);
+	//btn.setAttribute("style", "background-color:#00f;");
+	//btn.setAttribute("style", "color:#fff;");
+	//btn.style.backgroundColor = "#f00";
+	//btn.style.color = "#fff";
+	//btn.setAttribute("class", "my");
+	btn.className = "my";
+}
+</script>
+</head>
+<body>
+
+	<div id="my" style="boder:1px solid #000;background:#ff0">
+		<button id="btn" onclick="myclick();">click me</button>
+		<button id="btn2" onclick="myclick2()">click me</button>
+	</div>
+	<div id="my2">
+		div
+	</div>
+</body>
+</html>

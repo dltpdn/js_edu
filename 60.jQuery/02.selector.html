@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+$(function(){
+	var $div_a = $("div#a");
+	console.log($div_a);
+	console.log($div_a.size());
+	console.log($div_a.get(0));
+	
+	
+	$("span").css("color", "#f00");
+	$("#a").css("border", "1px solid #f00");
+	$('.b').css("border", "1px solid #00f");
+	$('[title="classB"]').css("border", "1px solid #0f0");
+	
+	$(document).find('#c').css("background", "#ff0");
+	$('span', '#c').css("background", "#00f");
+
+});
+</script>
+</head>
+<body>
+<div id="a">
+	<div id="b" class="bclass" >
+		<p title="classB">P1</p>
+		<span>Span1</span>	
+	</div>
+	<div id="c" class="cclass">
+		<p>p2</p>
+		<span>Span2</span>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Form Example</title>
+</head>
+<body>
+<h1>회원 가입양식</h1>
+<form action="example.com" method="post">
+<div class="idpwd">
+	<label for="id">ID</label><input type="text" name="id" id="id"/><input type="button" value="ID 중복체크"/><br/>
+	<label for="pwd">Password</label><input type="password" name="pwd" id="pwd"/>
+</div>
+	<fieldset>
+	<legend>성별</legend>
+		<label>남
+			<input type="radio" name="gender" id="gender" value="male"/>
+		</label>
+		<label>여
+			<input type="radio" name="gender" id="gender" value="femail"/>
+		</label>
+	</fieldset>
+	<fieldset>
+		<legend>취미</legend>
+		<label for="reading">독서</label><input type="checkbox" name="reading" id="reading"/>
+		<label for="travel">여행</label><input type="checkbox" name="travel" id="travel"/>
+		<label for="sports">운동</label><input type="checkbox" name="sports" id="sports"/>
+		<label for="music">음악</label><input type="checkbox" name="music" id="music"/>
+	</fieldset>
+	<label for="photo">사진</label>	<input type="file" name="photo" id="photo"/><br/>
+	<label for="major">전공</label>
+		<select name="major" id="major">
+			<optgroup label="인문대">
+				<option value="korean">국어국문</option>
+				<option value="english">영어영문</option>
+				<option value="french">불어불문</option>
+			 </optgroup>
+			 <optgroup label="자연대">	
+			 	<option value="chemistry">화학</option>
+			 	<option value="physics">물리</option>
+			 	<option value="math">수학</option>
+			 </optgroup>
+		</select><br/>
+	<label for="intro">자기소개</label>
+	<textarea name="intro" id="intro">
+	 자기소개를 입력해 주세요. 
+	</textarea><br/>
+	<input type="reset" value="지우기"/><input type="submit" value="확인"/>
+</form>
+</body>
+</html>

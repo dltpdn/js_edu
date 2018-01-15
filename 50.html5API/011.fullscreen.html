@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img#children{
+	width : 300px;
+	height : 200px;
+}
+img#children:fullscreen{
+	width:100%;
+	height:100%;
+}
+img#children:-webkit-full-screen{
+	width:100%;
+	height:100%;
+}
+img#children:-moz-full-screen{
+	width:100%;
+	height:100%;
+}
+
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	var el = document.querySelector('img#children');
+	el.onclick = function(){
+		if(el.requestFullscreen){
+			el.requestFullscreen();
+		}else if(el.mozRequestFullScreen){
+			el.mozRequestFullScreen()
+		}else if(el.webkitRequestFullscreen){
+			el.webkitRequestFullscreen();
+		}else if(el.webkitRequestFullScreen){
+			el.webkitRequestFullScreen();
+		}
+	}
+}
+</script>
+</head>
+<body>
+	<img id="children" src="img/children.jpg"/>
+</body>
+</html>

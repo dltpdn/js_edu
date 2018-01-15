@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	var img = new Image();
+	img.src= "./img/xwing.png";
+	img.onload = function(){
+		ctx.drawImage(img, 5, 5);
+		var imageData = ctx.getImageData(0,0, canvas.width, canvas.height);
+		var data = imageData.data;
+		for(var i=0, n=data.length; i< n; i +=4){
+			 data[i] = 255 - data[i]; // red
+		     data[i + 1] = 255 - data[i + 1]; // green
+		     data[i + 2] = 255 - data[i + 2]; // blue
+		}
+		ctx.putImageData(imageData, 150, 0);
+	}
+}
+
+</script>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>

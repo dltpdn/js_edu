@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let obj = {
+		array: [ 1,2,3,4],
+		nextIndex : 0,
+		[Symbol.iterator] : function(){
+			return {
+				array: this.array,
+				next: function(){
+					return this.nextIndex < this.array.length ?
+						{value : this.array[this.nextIndex++], done:false}:
+						{done:true};
+				}
+			}
+		}
+	}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

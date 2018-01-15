@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<style type="text/css">
+div{
+	width: 320px; height:50px;
+	padding : 20px;
+
+	font : 20px consolas;
+	border : 10px solid transparent;
+	overflow: hidden;
+	color: #fff;
+}
+#border{
+	background: url(../img/pattern.png) border-box,  #777;
+}
+#padding{
+	background: url(../img/pattern.png) padding-box,  #777;
+}
+
+#content{
+	background: url(../img/pattern.png) content-box,  #777;
+}
+
+</style>
+</head>
+<body>
+<div id="border">background-clip:border-box;</div>
+<p/>
+<div id="padding">background-clip:padding-box;</div>
+<p/>
+<div id="content">background-clip:content-box;</div>
+<p/>
+</body>
+</html>

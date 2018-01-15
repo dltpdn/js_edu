@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>Insert title here</title>
+<style type="text/css">
+#clock{
+	width:300px;
+	height:300px;
+	border : 1px solid #000;
+	border-radius: 150px;
+	position: relative;
+	background-color : #cdcdcd;
+}
+#center{
+	width : 20px; height : 20px;
+	position : absolute;
+	left : 140px; top : 140px;
+	border-radius : 10px;
+	background-color: #000;
+}
+#hour{
+	height : 100px;
+	width:5px;
+	background-color : #000; 
+	top : 70px;
+	left : 147px;
+	position: absolute;
+	-moz-transform : rotate(0deg);
+	-webkit-transform :rotate(0deg);
+	-moz-transform-origin : 50% 80px;
+	-webkit-transform-origin : 50% 80px;
+}
+#minute{
+	height : 130px;
+	width:4px;
+	top : 40px;
+	left : 148px;
+	position: absolute;
+	background-color : #000;
+	-moz-transform : rotate(0deg); 
+	-moz-transform-origin : 50% 110px;
+	-webkit-transform : rotate(0deg); 
+	-webkit-transform-origin : 50% 110px;
+}
+#second{
+	height : 140px;
+	width:2px;
+	top : 30px;
+	left : 148px;
+	position: absolute;
+	background-color : #f00; 
+	-moz-transform : rotate(0deg);
+	-moz-transform-origin : 50% 120px;
+	-webkit-transform : rotate(0deg);
+	-webkit-transform-origin : 50% 120px;
+}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	var hour = document.getElementById('hour');
+	var min = document.getElementById('minute');
+	var sec = document.getElementById('second');
+	var timer = function(){
+		var now = new Date();
+		var h = Math.abs(now.getHours() -12) * 30;
+		var m = now.getMinutes() * 6;
+		var s = now.getSeconds() * 6;
+		hour.setAttribute("style", "-moz-transform:rotate(" +h + "deg);"+
+									"-webkit-transform:rotate("+ h + "deg);");
+		sec.setAttribute("style", "-moz-transform:rotate(" +s + "deg);"+
+									"-webkit-transform:rotate("+ s + "deg);");
+		min.setAttribute("style", "-moz-transform:rotate(" +m + "deg);"
+									+"-webkit-transform:rotate("+ m + "deg);");
+	}
+	timer();
+	setInterval(timer, 1000);
+}
+</script>
+</head>
+<body>
+<div id="clock">
+	<div id="hour"></div>
+	<div id="minute"></div>
+	<div id="second"></div>
+	<div id="center"></div>
+</div>
+</body>
+</html>

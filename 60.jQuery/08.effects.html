@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+.div{
+	width:300px; height:200px;
+	border: 1px solid #87f;
+	background: #44f;
+	display:none;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#btnShow').click(function(){
+		$('.div').show("slow");
+	});
+	$('#btnHide').click(function(){
+		$('.div').hide("slow");
+	});
+});
+</script>
+</head>
+<body>
+<button id="btnShow">show</button><button id="btnHide">hide</button>
+<div class="div">Hello!</div>
+<p>Good bye</p>
+</body>
+</html>

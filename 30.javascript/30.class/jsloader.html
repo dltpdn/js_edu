@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>JsLoader</h1>
+<h3 id="filename">No js file has been specified.</h3>
+<hr/>
+<pre id="log"></pre>
+<script type="text/javascript">
+console.log = (function (old_function, div_log) { 
+    return function (msg) {
+        try{
+            throw new Error('test');
+        }catch(err){
+            var caller_msg = err.stack.split("\n");
+            var caller_line = caller_msg[caller_msg.length-1];
+        }
+        var text = msg;
+        if(typeof(msg) === "object"){
+            if(Array.isArray(msg)){
+                text = "[" + msg.toString() + "]";        
+            }else{
+                if(msg){
+                    try{
+                        text = JSON.stringify(msg);    
+                    }catch(e){
+                        old_function(e.name);
+                        if(e.name === "TypeError"){
+                            var keys = Object.keys(msg);
+                            text = msg.constructor.name +"{";
+                            keys.forEach(function(val, idx){
+                                text += "\t" + val + ":" + msg[val] +",\n"
+                            });
+                            text += "}";
+                        }        
+                    }
+                }else{
+                    text = "null";
+                }
+            }
+        }
+        old_function(text +" \t\t" + caller_line);
+        div_log.textContent += text +" \t\t"+ caller_line + "\n";
+    };
+} (console.log.bind(console), document.getElementById("log")));
+
+var target = document.location.hash;
+if(target && target.match(/^#\w+.js/i)){
+    target = target.replace(/^#/, '');
+    document.querySelector('#filename').textContent = "Js File:" +target;
+    var script = document.querySelector('#loader');
+    if(script){
+        document.head.removeChild(script);
+    }
+    script = document.createElement('script')
+    script.id = "loader";
+    script.src = target;
+    script.setAttribute("type", "text/javascript");
+    document.head.appendChild(script);
+}
+</script>
+
+</body>
+</html>

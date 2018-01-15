@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Audio</title>
+<style type="text/css">
+input{
+	width:100px;
+}
+</style>
+<script type="text/javascript">
+var audio = new Audio("media/sensitive.ogg");
+
+audio.addEventListener('ended', function(){
+	control.innerHTML = "play";
+});
+
+audio.addEventListener('timeupdate', function(evt){
+	current.value = audio.currentTime;
+});
+
+window.onload = function(){
+	control = document.getElementById('control');
+	current = document.getElementById("current");
+	duration = document.getElementById('duration');
+	volume = document.getElementById('volume');
+	mute = document.getElementById('mute');
+	current.value = audio.currentTime;
+	duration.value = audio.duration;
+}
+var togglePlay = function(){
+	if(audio.paused || audio.ended){
+		audio.play();
+		control.innerHTML = "pause";
+	}else{
+		audio.pause();
+		control.innerHTML = "play";
+	}
+}
+var toggleMute = function(){
+	audio.muted = !audio.muted;
+}
+</script>
+
+</head>
+<body>
+<div id="player">
+	<img src="media/sensitive.jpg" id="img"/><br/>
+	<button id="control" onclick="togglePlay()">play</button>
+	<input type="number" id="current"><span>/</span><input type="number" id="duration">
+	<button id="mute" onclick="toggleMute()">mute</button>
+</div>
+</body>
+</html>

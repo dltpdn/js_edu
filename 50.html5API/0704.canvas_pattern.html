@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	var img = new Image();
+	img.src= "./img/pattern.png";
+	img.onload = function(){
+		var ptrn = ctx.createPattern(img, 'repeat');
+		ctx.fillStyle = ptrn;
+		ctx.fillRect(0, 0, 200, 200);
+	}
+}
+
+</script>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function Person(name, age) {
+		var _name = name;
+		var _age = age;
+
+		Object.defineProperty(this, 'name', {
+			get : function() {
+				console.log('get name');
+				return _name;
+			},
+			set : function(name) {
+				console.log('set name');
+				_name = name;
+			}
+		});
+
+		Object.defineProperty(this, 'age', {
+			set : function(age) {
+				console.log('set age');
+				_age = age;
+			},
+			get : function() {
+				console.log('get age');
+				return _age;
+			}
+		});
+	};
+
+	Person
+	lee = new Person('lee', 27);
+	lee.name = 'kim';
+	lee.age = 23;
+	console.log(lee.name); // 'kim'
+	console.log(lee.age); // 23
+</script>
+</head>
+<body>
+
+</body>
+</html>

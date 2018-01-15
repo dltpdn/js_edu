@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ajax(xml) Plus-Example</title>
+<script type="text/javascript">
+function execute(){
+	var p1 = document.getElementById('p1').value;
+	var p2 = document.getElementById('p2').value;
+	var url = '/plus_json?p1='+p1+'&p2='+p2 ;
+	
+ xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			var json = xhr.responseText;
+			console.log(json)
+			//var res = eval('('+ json +')');
+			var res = JSON.parse(json);
+			document.getElementById('res').value = res.res;
+		}
+	}
+	xhr.open('GET', url, true);
+	xhr.send();
+}
+
+</script>
+</head>
+<body>
+<h1>Plus ajax json</h1>	
+<input type="text" id="p1"/> + 
+<input type="text" id="p2">
+<input type="button"  id="exe" value="=" onclick="execute()">
+<input type="text" id="res" readonly="readonly"/>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Local Storage</title>
+<style type="text/css">
+#list{
+	width: 300px;
+}
+</style>
+<script src="js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+jQuery(function(){
+	refresh();
+	$('#btnSave').click(function(){
+		localStorage[$('#key').val()] = $('#value').val();
+		refresh();
+	});
+	$('#btnRemove').click(function(){
+		delete localStorage[$('#key').val()];
+		$('#key').val('');
+		$('#value').val('');
+		refresh();
+	});
+	$('#list').change(function(){
+		$('option:selected',this).each(function(){
+			var key = $(this).val();
+			var value = localStorage[key];
+			$('#key').val(key);
+			$('#value').val(value);
+		});
+	});
+	$('#btnClearAll').click(function(){
+		localStorage.clear();
+		refresh();
+	});
+	
+})
+var refresh = function(){
+	$('#list').empty();
+	for(var i=0; i<localStorage.length; i++){
+		var key = localStorage.key(i);
+		$('#list').append('<option value="'+key+'">'+key+":"+localStorage[key]+'</option>');
+	}
+}
+</script>
+</head>
+<body>
+	<h1>Local Storage Test</h1>
+	Key : <input id="key" type="text"/>
+	Value :	<input id="value" type="text"/>
+	<button id="btnSave">Save</button>
+	<button id="btnRemove">Remove</button>
+	<hr/>
+	<select id="list" size=5 >
+	</select><br/>
+	<button id="btnRefresh">Refresh</button>
+	<button id="btnClearAll">ClearAll</button>
+</body>
+</html>

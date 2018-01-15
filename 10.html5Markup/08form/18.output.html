@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Output</title>
+<script type="text/javascript">
+	function resCalc() {
+		numA = document.getElementById("numA").value;
+		numB = document.getElementById("numB").value;
+		document.getElementById("result").value = Number(numA) + Number(numB);
+	}
+</script>
+</head>
+<body>
+	<form>
+		<input name="numa" type="number">
+		+
+		<input name="numb" type="number">
+		=
+		<output name="result"
+			onforminput="value=numa.valueAsNumber + numb.valueAsNumber"
+		></output>
+
+	</form>
+</body>
+</html>

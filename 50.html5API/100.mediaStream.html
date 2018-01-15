@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var localStream;
+window.onload = function(){
+	navigator.getUserMedia = (navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia);
+	var btnStart = document.querySelector('#btnStart');
+	var btnStop = document.querySelector('#btnStop');
+	var video = document.querySelector('#video'); 
+	btnStart.onclick = function(){
+		navigator.getUserMedia({
+			video :true,
+			audio : true
+		}, function(stream){
+			localStream = stream;
+			video.src = URL.createObjectURL(stream);
+		}, function(err){
+			alert("err:" + err)
+		});
+	}
+	btnStop.onclick = function(){
+		localStream.stop();
+		localStream = null;
+	}
+}
+</script>
+</head>
+<body>
+	<button id="btnStart">Start</button>
+	<button id="btnStop">Stop</button><br>
+	<video id="video" controls="controls" autoplay="autoplay"></video>
+</body>
+</html>

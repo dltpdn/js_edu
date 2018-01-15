@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+var arr = new Array();
+console.log(arr);
+console.log(arr.length);
+
+var arr2 = new Array(10);
+console.log(arr2);
+
+arr = new Array(5);
+console.log(arr.length);
+arr[0] = 1;
+arr[1] = 2;
+arr[2] = true;
+arr[3] = "three";
+arr[4] = new Object();
+console.log(arr)
+
+arr = [1,2,3,"four", true, new Object()];
+console.log(arr);
+arr[20] = 100;
+console.log(arr.length);
+arr.length = 5;
+console.log(arr);
+</script>
+</head>
+<body>
+<h1>Array.html</h1>
+</body>
+</html>

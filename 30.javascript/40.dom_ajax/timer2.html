@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function start1(){
+	//alert('start1');
+	var div = document.getElementById('timer1');
+	// 0.1초 주기로 0~100출력, setInterval() 사용
+	var x = 0;
+	var timer = setInterval(function(){
+		x++;
+		div.textContent = x;
+		if(x>=50) clearInterval(timer);
+	}, 100);
+}
+function start2(){
+	//alert('start2');
+	var div = document.getElementById('timer2');
+	// 0.1초 주기로 0~100출력, setTimeout()+ for loop 사용
+	for(var i=0; i<=50; i++){
+		(function (x){
+			setTimeout(function(){
+				div.textContent = x;
+				console.log(x, Date.now());
+			}, 100 * i);
+		}(i));		
+	}
+}
+</script>
+</head>
+<body>
+<button onclick="start1()">count</button>
+<div id="timer1">0</div>
+<hr>
+<!-- 
+<button onclick="start2()">count</button>
+<div id="timer2">0</div>
+ -->
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var source;
+window.onload = function(){
+	var context = new AudioContext();
+	var localStream;
+	
+	
+	navigator.getUserMedia = (navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia);
+	var btnStart = document.querySelector('#btnStart');
+	var btnStop = document.querySelector('#btnStop');
+	var vol = document.querySelector('#volumn');
+	var volumnValue = document.querySelector('#volumnValue');
+	var gainNode;
+	btnStart.onclick = function(){
+		navigator.getUserMedia({
+			video : false,
+			audio : true
+		}, function(stream){
+			localStream = stream;
+			source = context.createMediaStreamSource(stream);
+			var analyser = context.createAnalyser();
+			gainNode = context.createGain();
+			source.connect(gainNode);
+			gainNode.connect(analyser);
+			analyser.connect(context.destination);
+			
+			var bufferLength = analyser.fftSize;
+			var dataArray = new Uint8Array(bufferLength);
+			var canvas = document.getElementById('canvas');
+			var canvasCtx = canvas.getContext('2d');
+			var WIDTH = canvas.width;
+			var HEIGHT = canvas.height;
+	    	canvasCtx.lineWidth = 2;
+	      	canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+
+			function draw(){
+				analyser.getByteTimeDomainData(dataArray);
+				canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+		    	canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+		      	canvasCtx.beginPath();
+		      	var sliceWidth = WIDTH * 1.0 / bufferLength;
+		      	var x = 0;
+		     	 for(var i = 0; i < bufferLength; i++) {
+			          var v = dataArray[i] / 128.0;
+			          var y = v * HEIGHT/2;
+			          if(i === 0) {
+		    	        canvasCtx.moveTo(x, y);
+		        	  } else {
+		            	canvasCtx.lineTo(x, y);
+		          	  }
+		          		x += sliceWidth;
+		        }
+		      	canvasCtx.lineTo(canvas.width, canvas.height/2);
+		      	canvasCtx.stroke();
+		      	requestAnimationFrame(draw);
+			  };
+			draw();
+		}, function(err){
+			alert("err:" + err)
+		});
+	}
+	
+	
+	btnStop.onclick = function(){
+		localStream.stop();
+		localStream = null;
+	}
+	
+	vol.oninput = function(){
+		console.log(vol.value);
+		gainNode.gain.value = vol.value;
+		volumnValue.innerHTML = "volumn :" + vol.value;
+	}
+}
+</script>
+</head>
+<body>
+	<button id="btnStart">Start</button>
+	<button id="btnStop">Stop</button>
+	<label id="volumnValue">Volumn:</label><input type="range" min="0.0" max="1.0" step='0.1' value="0.5" id="volumn" >
+	<br>
+	<canvas id="canvas" width="600" height="300"></canvas>
+
+</body>
+</html>

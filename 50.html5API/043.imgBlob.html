@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var btnBrowse = document.querySelector('#browse');
+	var photo = document.querySelector('#photo');
+	btnBrowse.onchange = function(){
+		var objectUrl = URL.createObjectURL(this.files[0]);
+		photo.src = objectUrl;
+	}
+}
+</script>
+</head>
+<body>
+	<input type="file" id="browse"/><br/>
+	<img id="photo" width="400" height="300"/>
+</body>
+</html>	

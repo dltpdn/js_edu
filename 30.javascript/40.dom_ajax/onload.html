@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function myclick() {
+		alert('myclick!');
+	}
+	function myclick2(){
+		alert('myclick2.');
+	}
+	//document.getElementsByTagName("body")[0]
+	//document.body.onload = init;
+	window.onload = function(){
+		var btn = document.getElementById("mybtn");
+		//btn.setAttribute("onclick", "myclick();");
+		//btn.onclick = myclick;
+		btn.addEventListener("click", myclick);
+		btn.addEventListener("click", myclick2);
+	}
+</script>
+</head>
+<body>
+	<button id="mybtn">button</button>
+
+</body>
+
+</html>

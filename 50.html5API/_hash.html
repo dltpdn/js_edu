@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+(function(){
+	var router = {};
+	location.get = function(url, callback){
+		if(router[url]){
+			router[url].push(callback);
+		}else{
+			router[url] = [callback];
+		}
+		return location;
+	}
+	window.onhashchange = function(){
+		if(router[location.hash]){
+			router[location.hash].forEach(function(item){
+				item();
+			});
+		}
+	}
+})();
+window.onload = function(){
+	location.get('#/', function(){
+		document.body.style.backgroundColor = '#fff';
+	}).get('#/red', function(){
+		document.body.style.backgroundColor = '#f00';
+	}).get('#/blue', function(){
+		document.body.style.backgroundColor = '#00f';
+	});
+	location.hash= '#/';
+}
+</script>
+</head>
+<body>
+	<a href="#/">Home</a>
+	<a href="#/red">Red</a>
+	<a href="#/blue">Blue</a>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var obj = {
+		name : 'lee',
+		age : 27
+	};
+	Object.defineProperty(obj, 'addr', {
+		value : 'seoul',
+		enumarable : false
+	});
+	Object.keys(obj); // [name, age]
+	Object.getOwnPropertyNames(obj); //[name, age, addr]
+</script>
+</head>
+<body>
+
+</body>
+</html>

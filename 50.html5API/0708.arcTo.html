@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>canvas-arcTo</title>
+<script type="text/javascript">
+window.onload = function(){
+	var ctx = document.getElementById('canvas').getContext('2d');
+	ctx.moveTo(0,100)
+	ctx.arcTo(250, 100, 100, 300, 80);
+	ctx.lineWidth = 15;
+	ctx.stroke();
+	
+}
+</script>
+</head>
+<body>
+<canvas id="canvas" width="300" height="300"></canvas>
+</body>
+</html>

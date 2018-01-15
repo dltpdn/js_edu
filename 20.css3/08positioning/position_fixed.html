@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<style type="text/css">
+body{height:1000px;}
+div{border:1px solid #000;width:200px;height:50px;}
+.fixed{	position:fixed;	top:30px;	right:5px;}
+.rel_left{	position:relative;	left:-20px;}
+.rel_right{	position:relative;	left:20px;}
+.abs{	position:absolute;}
+.z1{
+	z-index:2;
+	background-color: #00f;
+	left:200px;
+	top:200px;
+}
+.z2{ z-index:1;
+	background-color: #f00;
+	left:240px;
+	top:240px;
+}
+</style>
+</head>
+<body>
+
+<div class="fixed">Fixed Position</div>
+<div class="rel_left">Related -20px</div>
+<div class="rel_right">Related 20px</div>
+<div class="abs z1">Absolute Z1</div>
+<div class="abs z2">Absolute Z2</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+.div{ width:100px; height:100px; border: 1px solid #000; padding:2px;}
+</style>
+<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+$(function(){
+	console.log($('div').css('width'));	
+	console.log($('div').width());
+	console.log($('div').outerWidth());
+	console.log($('div').innerWidth());
+	
+	$('div').css("background", "#ff0");
+	$('div').bind('click', function(){
+		$(this).css({
+			position : 'absolute',
+			left : Math.random() * 100 +'px',
+			top : Math.random() * 100 +'px'
+		});
+	});
+});
+</script>
+</head>
+<body>
+<div class="div"></div>
+<hr/>
+</body>
+</html>

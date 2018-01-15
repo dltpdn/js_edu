@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var obj = {};
+Object.defineProperties(obj, {'name': {
+									value :'lee',
+									writable : false,
+									enumerable : false
+								},
+						'age': {
+									value : 27,
+									writeable : true,
+									enumerable : true
+							   }
+						}
+);
+
+
+console.log(obj);
+console.log(obj.name + "," + obj.age);
+</script>
+</head>
+<body>
+
+</body>
+</html>

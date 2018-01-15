@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var p = new Proxy(function() {}, {
+	  construct: function(target, argumentsList, newTarget) {
+	    console.log("called: " + argumentsList.join(", "));
+	    return { value: argumentsList[0] * 10 };
+	  }
+	});
+
+	console.log(new p(1).value); // "called: 1"
+	                             // 10
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

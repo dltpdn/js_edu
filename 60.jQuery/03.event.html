@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#btn1').bind('click', function(event){
+		alert('Clicked!');
+		console.log(this);
+	});
+	
+	$('#btn2').click(function(event){
+		alert("Clicked Tow");
+		$(this).css("color", "#f00");
+	});
+	
+});
+</script>
+</head>
+<body>
+<button id="btn1">Click Me</button>
+<button id="btn2">Click Me</button>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+var aFile = ['<h1>Hello I am from BLOB</h1>'];
+var myBlob = new Blob(aFile, {type : 'text/html'});
+
+var reader = new FileReader();
+reader.onload = function(){
+	var html = reader.result;
+	console.log(html);
+	document.querySelector('body').innerHTML = html;
+}
+reader.readAsText(myBlob);
+</script>
+</head>
+<body>
+</body>
+</html>

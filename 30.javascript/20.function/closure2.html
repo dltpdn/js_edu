@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+//function main(){
+//window = {......}
+
+var x = "global"; //window.x = "global"
+
+function global(){  //window.global = funcion{}
+// ? = { [scope] : window }
+
+	var x = "local"; //?.x = "local"
+	var y = "local-y";
+	var z = "local-z";
+	var w = "local-w";
+	debugger;
+	
+	return function(){ //?.anonymous = function(){}
+	// ?? = { [scope] : ?  }	
+		var y = "inner";  // ??.y = "inner"
+		console.log(y); // 1 : ??.y ==> "inner"
+		console.log(x); // 1 : ??.x ==> 2 : ??.?.x =="local"
+	}
+}
+
+var local = global();
+local();
+
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

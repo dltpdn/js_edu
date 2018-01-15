@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>quadratic curve</title>
+<script type="text/javascript">
+window.onload = function(){
+	var ctx = document.getElementById('canvas').getContext('2d');
+	ctx.moveTo(188, 150);
+	ctx.quadraticCurveTo(288, 0, 388, 150);
+	ctx.lineWidth = 10;
+	ctx.stroke();
+}
+
+</script>
+</head>
+<body>
+<canvas id="canvas" width="600" height="200"></canvas>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.progress{
+	width:300px;
+	height:20px;
+	border: 1px solid #eee;
+	background-color:#f00;
+	position:relative;
+	background-image : url(./img/progress_bg.gif);
+	font-size: 12px;
+	font-family : Gulim, Serif, Sans-serif;
+}
+.progress_bar{
+	width:50%;
+	height:100%;
+	background-color:#0f0;
+	position:absolute;
+	left:0px;
+	top:0px;
+	overflow: hidden;
+	background-image: url(./img/progress_bar.gif);
+}
+.text{
+	display: inline-block;
+	text-align:center;
+	line-height:20px;
+}
+.progress_text{	width:100%;}
+.progress_bar_text{	width:300px;	color: #fff; }
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript">
+var Progress = function(width, height, parent_id){
+	var parent = $('#'+parent_id);
+	if(!parent.length) parent = $(document.body);
+	this.progress = $('<div/>').addClass('progress').width(width).height(height);
+	console.log(this.progress);
+	this.progress_bar = $('<div/>').addClass('progress_bar');
+	this.progress_text = $('<div/>').addClass('progress_text text').css('line-height', height+"px");
+	this.progress_bar_text = $('<div/>').addClass('progress_bar_text text').css('line-height', height+"px").width(width);
+	parent.append(this.progress.append(this.progress_text).append(this.progress_bar.append(this.progress_bar_text)));
+	this.setPercent(0);
+	
+}
+Progress.prototype.setPercent = function(percent){
+	this.progress_text.text(percent+"%");
+	this.progress_bar_text.text(percent+"%");
+	this.progress_bar.css("width",percent+"%");
+}
+
+$(function(){
+	var p =null;
+	$('#create').click(function(){
+		console.log('ccc');
+		p = new Progress(300, 20);
+	});
+	$("#apply").click(function(){
+		p.setPercent($('#percent').val());
+	})
+	
+	
+});
+</script>
+</head>
+<body>
+<div id="panel"></div>
+<div>
+<button id="create">create</button>
+	<input type="text" id="percent"/><button id="apply">적용</button>
+	<span></span>
+</div>
+</body>
+</html>

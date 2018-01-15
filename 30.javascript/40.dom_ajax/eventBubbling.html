@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload=function(){
+	var div = document.getElementById("div")
+	var btn = document.getElementById('btn');
+	div.addEventListener('mousedown', function(event){
+		event.stopPropagation();
+		console.log("div clicked.");
+		console.log(event.target);
+	}, true);
+	btn.addEventListener('mousedown', function(event){
+		event.stopPropagation();
+		console.log("btn clicked.");
+	});
+}
+</script>
+</head>
+<body>
+	<div id="div" style="height:300px; width:200px;background:#ff0;">
+		<button id="btn">btn</button>
+		div
+	</div>
+</body>
+</html>

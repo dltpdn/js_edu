@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+#list{
+	width: 300px;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+var db = null;
+var dbName = "mydb";
+var tableName = "MyTest";
+var neo = true;
+
+var openDB = function(){
+	console.log("hw");
+	db = openDatabase(dbName, '1.0', 'Test DB', 10*1024, function(){
+		console.log("db opened..");
+	});
+	
+	refresh();
+}
+var createTable = function(){
+	if(!db) return;
+	db.transaction(
+			function(tx) {
+				tx.executeSql('CREATE TABLE IF NOT EXISTS '+tableName + '(key unique, value)');
+			}, function(error) {
+				alert(error.message);
+			}, function(){
+				console.log("Table created..");
+			});
+	
+}
+var refresh = function(){
+	db.transaction(function(tx) {
+		tx.executeSql('SELECT * FROM '+tableName, [], function(tx, results) {
+			var len = results.rows.length, i;
+			console.log("Found rows: " + len);
+			$('#list').empty();
+			for(var i=0; i<len; i++){
+				console.log(i +":"+results.rows.item(i));
+				var key = results.rows.item(i).key;
+				var value = results.rows.item(i).value;
+				$('#list').append('<option value="'+key+'">'+key+":"+value+'</option>');
+			}
+		}, null);
+	});
+}
+var select = function(key){
+	console.log("select:"+key);
+	db.transaction(function(tx){
+		tx.executeSql('SELECT value FROM '+tableName + ' WHERE key=?',[key], function(tx, results){
+			console.log("selected "+ results);
+			if(results.rows.length){
+				$('#value').val(results.rows.item(0).value);
+			}
+		} );
+	});
+}
+var insert = function(key, value){
+	db.transaction(
+			function(tx) {
+				tx.executeSql('INSERT INTO '+tableName+' (key, value) VALUES ("'+key+'", "'+value+'")');
+			}, function(error) {
+				alert(error.message);
+			}, function(){
+				refresh();
+			});
+}
+var update = function(key, value){
+	db.transaction(
+			function(tx) {
+				tx.executeSql('UPDATE '+tableName+' SET value = ? WHERE key = ?', [value, key], function(result){
+					console.log(result);
+				});
+			}, function(error) {
+				alert(error.message);
+			}, function(){
+				refresh();
+			});
+}
+var remove = function(key){
+	db.transaction(
+			function(tx) {
+				tx.executeSql('DELETE FROM '+tableName+' WHERE key = ?', [key], function(result){
+					console.log(result);
+				});
+			}, function(error) {
+				alert(error.message);
+			}, function(){
+				refresh();
+			});
+}
+$(function(){
+	$("#openDB").click(function(){
+		dbName = $("#dbname").val();
+		openDB();
+	});
+	$("#createTable").click(function(){
+		tableName = $('#tablename').val();
+		createTable();
+		refresh();
+	});
+	$('#list').change(function(){
+		$('option:selected',this).each(function(){
+			var key = $(this).val();
+			$('#key').val(key);
+			select(key);
+			neo = false;
+		});
+	});
+	$('#btnSave').click(function(){
+		if(neo){
+			insert($('#key').val(), $('#value').val());
+		}else{
+			update($('#key').val(), $('#value').val());
+		}
+	});
+	$('#btnRemove').click(function(){
+		remove($('#key').val());
+		$('#key').val('');
+		$('#value').val('');
+		refresh();
+	});	
+	$('#btnNew').click(function(){
+		neo = true;
+		$('#key').val('');
+		$('#value').val('');
+		
+	});
+	$('#btnRefresh').click(refresh);
+});
+
+</script>
+</head>
+<body>
+<label for="dbname">DB Name</label><input type="text" name="" id="dbname" value="mydb"/>
+<button id="openDB">Open DB</button>
+<label for="tablename">Table Name</label><input type="text" name="" id="tablename" value="MyTest" />
+<button id="createTable">Create Table</button>
+<hr/>
+	Key : <input id="key" type="text"/>
+	Value :	<input id="value" type="text"/>
+	<button id="btnSave">Save</button>
+	<button id="btnRemove">Remove</button>
+	<button id="btnNew">New</button>
+	<hr/>
+	<select id="list" size=5 >
+	</select><br/>
+	<button id="btnRefresh">Refresh</button>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/worker" id='workerSrc'>
+onmessage = function(event){
+	postMessage(event.data + ' from Worker');
+}
+</script>
+<script type="text/javascript">
+var workerSrc = document.querySelector('#workerSrc').textContent;
+var blob = new Blob([workerSrc], {type: 'text/javascript'});
+var worker = new Worker(URL.createObjectURL(blob));
+worker.onmessage = function(event){
+	alert(event.data);
+	worker.terminate();
+}
+worker.postMessage('Hello!');
+</script>
+</head>
+<body>
+
+</body>
+</html>

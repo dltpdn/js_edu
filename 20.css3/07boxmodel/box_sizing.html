@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+div.container {
+	width: 30em;
+	border: 1em solid;
+}
+
+div.box {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box; /* Firefox */
+	-webkit-box-sizing: border-box; /* Safari */
+	width: 50%;
+	border: 1em solid red;
+	
+}
+div.left{float:left;}
+div.right{float:right;}
+div.container:after{content:""; display:block;clear:both;}
+</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="box left">This div occupies the left half.</div>
+		<div class="box right">This div occupies the right half.</div>
+	</div>
+
+</body>
+</html>

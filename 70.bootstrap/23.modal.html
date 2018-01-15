@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bootstrap Grid Example</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+	<div class="container">
+		<h1>Modal Test</h1>
+		<a class="btn btn-default" href="#my" data-target="#my"
+			data-toggle="modal">show Modal</a>
+		<div class="modal" id="my">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<h1>This is Modal</h1>
+				</div>
+			</div>
+		</div>
+		<a class="btn btn-default" href="#my2" data-toggle="modal">show
+			Modal</a>
+
+		<div class="modal" id="my2">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" data-dismiss="modal">x</button>
+						<h5 class="modal-title">Title</h5>
+					</div>
+					<div class="modal-body">
+						<p>Hello Modal!</p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal">Close</button>
+						<button class="btn btn-primary">OK</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button class="btn btn-default" data-target="#mylogin" data-toggle="modal">show</button>
+		<a href="#mylogin" data-toggle="modal" class="btn btn-primary">show</a>
+
+		<div class="modal" id="mylogin">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button class="close" data-dismiss="modal">x</button>
+						<h5>Login</h5>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal panel">
+							<fieldset>
+								<div class="form-group">
+									<label class="control-label col-md-3" for="id">ID:</label>
+									<div class="col-md-5">
+										<input type="text" id="id" class="form-control"
+											placeholder="ID를 입력하세요.">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-3" for="pwd">Password:</label>
+									<div class="col-md-5">
+										<input type="password" id="pwd" class="form-control"
+											placeholder="비밀번호를 입력하세요.">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-offset-3 col-md-5">
+										<label for="remember"> <input type="checkbox"
+											id="remember"> Remember
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-offset-3 col-md-5">
+										<input class="btn btn-primary" type="submit" value="login">
+										<button class="btn btn-default" data-dismiss="modal">Cancel</button>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

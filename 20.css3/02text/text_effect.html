@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<style type="text/css">
+p{
+	font: bold 24px  consolas;
+	padding: 10px;
+}
+#shadow1{
+	text-shadow: 0px 0px 5px #000;
+}
+#shadow2{
+	text-shadow: 10px 5px 5px #000;
+}
+#shadow3{
+	text-shadow: -10px 5px 5px #000;
+}
+#wordwrap1{
+	font-size: 12px;
+	width: 10em; height: 1em;
+	border: 1px solid #000;
+	word-wrap: break-word;
+}
+#wordwrap2{
+	font-size: 12px;
+	width: 10em; height: 1em;
+	border: 1px solid #000;
+	word-wrap: normal;
+}
+.over{
+	font-size: 12px;
+	width: 10em; height: 1em;
+	border: 1px solid #000;
+	overflow: hidden;
+}
+.over1{
+	text-overflow: ellipsis
+}
+.over2{
+	text-overflow : clip;
+}
+
+</style>
+</head>
+<body>
+<p id="shadow1">
+text-shadow
+</p>
+<p id="shadow2">
+text-shadow
+</p>
+<p id="shadow3">
+text-shadow
+</p>
+<p id="wordwrap1">abcdefghigklmnopqrstuvwxyz</p>
+<p id="wordwrap2">abcdefghigklmnopqrstuvwxyz</p>
+<p class="over1 over">abcdefghigklmnopqrstuvwxyz</p>
+<p class="over over2">abcdefghigklmnopqrstuvwxyz</p>
+
+</body>
+</html>

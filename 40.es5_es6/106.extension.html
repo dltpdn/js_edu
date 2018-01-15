@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var obj = {};
+Object.preventExtensions(obj);
+Object.isExtensionsible(obj);  // true
+
+obj.name = 'lee'; // 효력 없음, Error in strict mode
+Object.defineProperty(obj, 'name', {
+									value :'lee'
+									writable : false,
+									enumerable : false
+});  // Error
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

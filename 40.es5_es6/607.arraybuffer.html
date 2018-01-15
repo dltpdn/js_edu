@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let buff = new ArrayBuffer(80);
+let view = DataView(buff);
+view.setInt32(8, 22, false);
+var number = view.getInt32(8, false);
+console.log(number);//22
+
+
+let buff = new ArrayBuffer(80);
+let typed = new Int32Array(buff);
+typed[0] = 22;
+console.log(typed.length, typed[0]); // 20 22
+
+let int16 = new Int16Array(2);
+int16[0] = 10;
+int16[1] = 20;
+console.log(int16); // {0=10, 1=20}
+
+let x = new Int16Array([21, 31]);
+console.log(x); // {0=21, 1=31}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

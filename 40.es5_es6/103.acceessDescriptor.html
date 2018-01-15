@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+var value = 0;
+var obj = {
+	get v(){
+		console.log('getter.');
+		return value;
+	},
+	set v(v){
+		console.log('setter:'+v);
+		value = v;
+	}
+};
+
+obj.v = 10; // setter:10
+console.log(obj.v); // gettter. 10
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

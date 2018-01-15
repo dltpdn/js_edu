@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function Person(name, age) {
+		this.name = name;
+	}
+	Person.prototype.getName = function() {
+		return this.name;
+	}
+	var parent = new Person('lee');
+	var child = Object.create(parent, {
+		'age' : {
+			value : 27
+		}
+	});
+	child.getName(); // 'lee'
+	child.age; // 27
+</script>
+</head>
+<body>
+
+</body>
+</html>

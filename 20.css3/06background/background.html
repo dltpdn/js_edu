@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CSS background example</title>
+<style type="text/css">
+body{	background-color: #efefff;}
+.bgimg{
+	background-image:url(../img/metal-grill-background.jpg); 
+	text-align: center;	color: #fff; font-size: 40px; width: 400px;	height: 300px;
+}
+.bgnorepeat{	background-repeat: no-repeat;	background-color:#eee;}
+.bgposition{	background-position: center center;}
+.home{	background:url(../img/img_navsprites.gif) 0 0;width:46px;	height:44px;}
+.home:hover{	background-position: 0 -45px;}
+.next{	background:url(../img/img_navsprites.gif) -91px 0; width:43px;height:44px;}
+.next:hover{	background-position: -91px -45px;}
+</style>
+</head>
+<body >
+<div class="bgimg">Background Image</div>
+<hr/>
+<div class="bgimg bgnorepeat">Background Image no repeat</div>
+<hr/>
+<div class="bgimg bgnorepeat bgposition">Background Image Position</div>
+<hr/>
+<div class="home"></div><div class="next"></div>
+</body>
+</html>

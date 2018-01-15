@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+class Cat { 
+	  constructor(name) {
+	    this.name = name;
+	  }
+	  
+	  speak() {
+	    console.log(this.name + ' makes a noise.');
+	  }
+	}
+
+	class Lion extends Cat {
+	  speak() {
+	    super.speak();
+	    console.log(this.name + ' roars.');
+	  }
+	}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var count = 1;
+	document.querySelector('button').onclick = function(){
+		document.querySelector('h1').innerHTML = ('Count - ' + count);
+		
+		history.pushState({
+			data : count
+		}, 'Push State', '#' + count);
+		count++;
+	}
+	
+}
+
+window.onpopstate = function(event){
+	if(event.state){
+		alert(event.state.data);
+		document.querySelector('h1').innerHTML = ('Count - ' + event.state.data);
+	}
+}
+
+</script>
+</head>
+<body>
+	<h1>Count - 0</h1>
+	<button>Click</button>	
+</body>
+</html>

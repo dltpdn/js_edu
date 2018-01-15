@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Drag and Drop</title>
+<style type="text/css">
+#draggable {
+	user-select : none;
+	background-color: #6633FF;
+	width: 75px;
+	height: 75px;
+}
+
+#droppable {
+	background-color: #FF6699;
+	width: 150px;
+	height: 150px;
+}
+#dontdrop{
+	background-color: #F00;
+	width: 150px;
+	height: 150px;
+}
+.enter{
+	border: 2px solid #ff0;
+}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	var draggable = document.getElementById("draggable");
+	draggable.addEventListener("dragstart", function(evt) {
+		evt.dataTransfer.effectAllowed = 'move';
+		evt.dataTransfer.setData("text/plain", evt.target.getAttribute('id'));
+		evt.dataTransfer.setDragImage(evt.target, 0, 0);
+		console.log('drag start..');
+	}, false);
+	
+	var droppable = document.getElementById("droppable");
+	droppable.addEventListener('dragenter', function(event){
+		this.className = 'enter';
+		console.log('enter');
+	});
+	droppable.addEventListener('dragleave', function(event){
+		this.className = '';
+		console.log('leave');
+	});
+	droppable.addEventListener("dragover", function dragoverHandle(event) {
+		console.log('drag over..');
+		event.preventDefault();
+		return false;
+	} , false);
+	droppable.addEventListener("drop", function(event) {
+		console.log('drop');
+		event.preventDefault();
+		event.stopPropagation();
+		var draggable = event.dataTransfer.getData("text/plain");
+		event.target.appendChild(document.getElementById(draggable));
+		return false;
+	}, false);
+	droppable.ondropend = function(){
+		console.log('drop end');
+	}
+}
+</script>
+</head>
+<body>
+	<div id="draggable" draggable="true">Drag Me!</div>
+	<div id="droppable">Drop Hear!</div>
+	<div id="dontdrop">Don't drop hear.</div>
+</body>
+</html>

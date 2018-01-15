@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var obj = {};
+Object.defineProperty(obj, 'name', {
+									value :'lee',
+									writable : true
+					});
+obj.name = "lee";
+console.log(obj.name);
+var desc = Object.getOwnPropertyDescriptor(obj, 'name');
+desc.writable = false;
+
+Object.defineProperty(obj, 'name', desc);
+obj.name = "kim";
+console.log(obj.name);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

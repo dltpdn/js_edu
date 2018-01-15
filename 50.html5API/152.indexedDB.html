@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var db = null;
+	var customerData = [ {
+		ssn : "444-44-4444",
+		name : "Bill",
+		age : 35,
+		email : "bill@company.com"
+	}, {
+		ssn : "555-55-5555",
+		name : "Donna",
+		age : 32,
+		email : "donna@home.org"
+	} ];
+	var dbName = "the_name";
+
+	var init = function() {
+		var indexedDB = window.indexedDB || window.webkitIndexedDB
+				|| window.mozIndexedDB || window.msIndexedDB;
+		var request = indexedDB.open("mytest", 4);
+		console.log(request);
+		console.log(request.onsuccess);
+		request.onsuccess = function() {
+			db = request.result;
+			console.log("success");
+			console.log(db);
+			if (db.setVersion) {
+				var upRequest = db.setVersion();
+			}
+			
+		};
+		request.onerror = function(e) {
+			alert("err");
+		};
+
+		var upgrade = function() {
+			var objectStore = db.createObjectStore("customers", {
+				keyPath : "ssn"
+			});
+
+			objectStore.createIndex("name", "name", {
+				unique : false
+			});
+			objectStore.createIndex("email", "email", {
+				unique : true
+			});
+			for (i in customerData) {
+				objectStore.add(customerData[i]);
+			}
+		}
+		request.onupgradeneeded = upgrade;
+	}
+
+	
+	var save = function(){
+		var transaction = db.transaction(["customers"], IDBTransaction.READ_WRITE); 
+		transaction.oncomplete = function(event) {  
+			  alert("All done!");  
+			};  
+			  
+			transaction.onerror = function(event) {  
+			  // Don't forget to handle errors!  
+			};  
+			  
+			var objectStore = transaction.objectStore("customers");  
+			for (var i in customerData) {  
+			  var request = objectStore.add(customerData[i]);  
+			  request.onsuccess = function(event) {  
+			    // event.target.result == customerData[i].ssn  
+			  };  
+			}  		
+	}
+	var load = function() {
+		var transaction = db.transaction([ "customers" ]);
+		var objectStore = transaction.objectStore("customers");
+		var request = objectStore.get("444-44-4444");
+		request.onerror = function(event) {
+			// Handle errors!  
+		};
+		request.onsuccess = function(event) {
+			// Do something with the request.result!  
+			alert("Name for SSN 444-44-4444 is " + request.result.name);
+		};
+	}
+</script>
+
+</head>
+<body onload="init()">
+<button onclick="save()">save</button>
+<button onclick="load()">load</button>
+</body>
+</html>

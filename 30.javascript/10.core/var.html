@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+//var window = .........
+window.age = 27;
+console.log(window.age);
+
+var i = 10;
+window.ii = 100;
+j =1000;
+jj = 2000;
+var i = 10000;
+
+delete i;
+delete ii;
+console.log('i', i, 'ii', ii);
+window.console.log('window.i', window.i, 'window.ii', window.ii);
+//window.alert('hello');
+//f();
+function fn(){
+	var j = 20;
+	var jj = 200;
+	console.log('j', j, 'jj', window.jj);
+	console.log('i', i, 'ii', ii);
+}
+fn()
+console.log('j', j, 'jj', jj);
+console.log('jj', jj);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

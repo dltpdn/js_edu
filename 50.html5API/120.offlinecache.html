@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="cache/style.css" rel="stylesheet" type="text/css"></link>
+<script type="text/javascript" src="cache/script.js"></script>
+<script type="text/javascript">
+checkOffline();
+applicationCache.error = function(){
+	alert("cache error");
+}
+
+window.onload = function(){
+	var checkBtn = document.getElementById("check");
+	checkBtn.addEventListener("click", function(){
+		checkOffline();
+		alert(applicationCache.status);
+	});
+}
+
+window.addEventListener("online", function(){
+	alert("online");
+});
+
+window.addEventListener("offline", function(){
+	alert("offline");
+})
+</script>
+</head>
+<body>
+<div>
+Offlie Web Cache Example
+<img src="img/xwing.png"/>
+<button id="check">Check</button>
+</div>
+</body>
+</html>

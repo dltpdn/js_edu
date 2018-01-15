@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var doAsync = function(condition){
+	return new Promise(function(resolve, reject){
+		setTimeout(function(){
+			if(condition){
+				resolve("success");
+			}else{
+				reject("fail");
+			}
+		}, 3000);
+	}
+	};
+
+	doAsync(true).then(function(value){
+		console.log('ok:' + value);
+	}, function(reason){
+		console.log('fail:' + reason);
+	});
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

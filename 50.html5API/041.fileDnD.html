@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	border: 1px solid #000;
+	width: 300px;
+	height: 200px;
+}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		var dropZone = document.getElementById("dropZone");
+		var img = document.createElement("img");
+		dropZone.addEventListener("dragover", function(event) {
+			event.preventDefault();
+			return false;
+		}, false);
+
+		dropZone.addEventListener("drop", function(event) {
+			event.stopPropagation();
+			event.preventDefault();
+			var file = event.dataTransfer.files[0];
+			var imageType = /image.*/;
+			var textType = /text.*/;
+			var isImage;
+
+			if (file.type.match(imageType)) {
+				isImage = true;
+			} else if (file.type.match(textType)) {
+				isImage = false;
+			}
+
+			var reader = new FileReader();
+			reader.onload = function() {
+				if (isImage) {
+					img.src = reader.result;
+					dropZone.appendChild(img)
+				} else {
+					dropZone.innerHTML = reader.result;
+				}
+			};
+			if (isImage) {
+				reader.readAsDataURL(file);
+			} else {
+				reader.readAsText(file, "EUC-KR");
+			}
+
+			return false;
+		}, false);
+
+	}
+</script>
+</head>
+<body>
+	<div id="dropZone"></div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+new Array(5); //[ ,,,,], length:5
+Array.of(5); // [5], length:1
+Array.of(1,2,3); //[1,2,3], length:3
+
+[1, 2, 3].fill(4);               // [4, 4, 4]
+[1, 2, 3].fill(4, 1);            // [1, 4, 4]
+[1, 2, 3].fill(4, 1, 2);         // [1, 4, 3]
+
+
+var people = [ 
+          	{name:'lee', age:27},
+          	{name:'kim', age:23},
+          	{name:'park', age:30}
+          ];
+
+          people.find(function(val, idx, arr){
+          	return val.name = 'kim';
+          }); //{ name: 'kim', age: 27 }
+           
+          [1, 2, 3, 4, 5].copyWithin(0, 3);
+       // [4, 5, 3, 4, 5]
+
+       [1, 2, 3, 4, 5].copyWithin(0, 3, 4);
+       // [4, 2, 3, 4, 5]
+
+       
+       var entries = [1,2,3].entries();
+console.log(...entries); //[0, 1] [1, 2] [2, 3]
+
+var keys = [1,2,3].keys(); // 0 1 2
+console.log(...keys);
+
+var values = [1,2,3].values();
+console.log(values); // 1 2 3
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#panel{
+	width : 400px;
+	height : 300px;
+	position : relative;
+	border : 1px solid #000; 
+}
+</style>
+<script type="text/javascript">
+var stars = [];
+var handle = null;
+window.onload = function(){
+	var btn = document.querySelector('#btn');
+	btn.onclick = function(){
+		toggle();
+	}
+	var panel = document.querySelector('#panel');
+	for(var i=0; i<10; i++){
+		var el = document.createElement('span');
+		el.textContent = '★';
+		el.style.position = 'absolute';
+		el.style.top = (Math.random() * 300)  + 'px';
+		el.style.left = (Math.random() * 400) + 'px';
+		panel.appendChild(el);
+		stars.push(el);
+	}
+}
+function toggle(){
+	state = true;
+	//setInterval(update, 1000/240);
+	if(handle){
+		cancelAnimationFrame(handle)
+		handle = null;
+	}else{
+		handle = requestAnimationFrame(update);
+	}
+}
+function update(){
+	console.log(new Date());
+	for(var i=0; i<10; i++){
+		var el = stars[i];
+		el.style.top = (Math.random() * 300)  + 'px';
+		el.style.left = (Math.random() * 400) + 'px';
+	}
+	handle = requestAnimationFrame(update);
+}
+
+</script>
+</head>
+<body>
+<button id="btn">toggle animation</button>
+<div id="panel">
+</div>
+</body>
+</html>

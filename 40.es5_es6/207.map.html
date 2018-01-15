@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+[1, 2, 3].map(function(el, idx, array){
+	return el * el;
+});
+//[ 1, 4, 9 ]
+
+
+
+['1', '2', '3'].map(function(el, idx, array){
+	return parseInt(el, 10);
+}); // [1, 2, 3]
+['1', '2', '3'].map(Number); //[1,2,3]
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

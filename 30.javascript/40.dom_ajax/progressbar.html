@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+.progress {
+	height: 20px;
+	width: 300px;
+	border: 1px solid #000;
+	position: relative;
+	background: #f00 linear-gradient(top, #f1f1f1, #cdcdcd);
+	background: #f00 -moz-linear-gradient(top, #f1f1f1, #cdcdcd);
+	background: #f00 -webkit-linear-gradient(top, #f1f1f1, #cdcdcd);
+	font: 12px gulim;
+}
+
+.progress .bar {
+	width: 50%;
+	transition : width 1s;
+	height: 100%;
+	background: #0f0 linear-gradient(top, #2864A1, #72A4C3);
+	background: #0f0 -moz-linear-gradient(top, #2864A1, #72A4C3);
+	background: #0f0 -webkit-linear-gradient(top, #2864A1, #72A4C3);
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: hidden;
+}
+
+.progress span {
+	display: inline-block;
+	text-align: center;
+	virtical-align: middle;
+	line-height: 20px;
+	width: 100%;
+}
+
+.progress .bar > span {
+	width: 300px;
+	color: #fff;
+	width: 300px;
+}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var btn_create = document.querySelector('#btn_create');
+	var btn_apply = document.querySelector('#btn_apply');
+	var percent = document.querySelector('#percent');
+	
+	var p;
+	btn_create.onclick=function(){
+		p = new ProgressBar(300, 20, "placeHolder");
+	}
+	btn_apply.onclick=function(){
+		p.setPercent(percent.value);
+	}
+};
+ 
+function ProgressBar(width, height, parentId){
+	var parent = document.querySelector('#'+parentId);
+	parent = parent || document.body;	
+	width = width || 300;
+	height = height || 20;
+	//parent.innerHTML = '<div class="progress"><span>50%</span><div class="bar"><span>50%</span></div></div>';
+	this.div = document.createElement('div');
+	this.span = document.createElement('span');
+	this.div_div = document.createElement('div');
+	this.div_span = document.createElement('span');
+	
+	this.div.className = "progress"
+	//this.span.textContent = "50%";
+	this.div_div.className = "bar";
+	//this.div_span.textContent = "50%";
+	this.div.appendChild(this.span);
+	this.div.appendChild(this.div_div);
+	this.div_div.appendChild(this.div_span);
+	this.setSize(width, height);
+	this.setPercent(0);
+	parent.appendChild(this.div);
+}
+ProgressBar.prototype.setPercent=function(value){
+	this.div_div.style.width = value + "%";
+	this.span.textContent = value +  '%';
+	this.div_span.textContent = value + "%";
+}
+ProgressBar.prototype.setWidth = function(w){
+	this.div.style.width = w + "px";
+}
+ProgressBar.prototype.setHeight = function(h){
+	this.div.style.height = h + "px";
+}
+ProgressBar.prototype.setSize = function(w,h){
+	this.setWidth(w);
+	this.setHeight(h);
+}
+</script>
+</head>
+<body>
+	<button id="btn_create">create</button>
+	<input type="number" id="percent"/>
+	<button id="btn_apply">apply</button>
+	<hr>
+	
+	<div id="placeHolder"></div>
+<!-- 
+	<div class="progress">
+		<span>50%</span>
+		<div class="bar">
+			<span>50%</span>
+		</div>
+	</div>
+ -->		
+</body>
+</html>

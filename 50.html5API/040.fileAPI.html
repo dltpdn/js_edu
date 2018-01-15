@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<style type="text/css">
+span{
+	border: 1px solid #000;
+}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	var file = document.getElementById("file");
+	file.addEventListener('change', function(evt){
+		var info = "name :"+ this.files[0].name;
+		info += " size:" + this.files[0].size;
+		info += " type:" + this.files[0].type;
+		document.getElementById("info").innerHTML = info;
+		if(this.files[0].type.match(/image.*/)){
+			var img = document.createElement('img');
+			var objectURL = URL.createObjectURL(this.files[0]);
+			img.src = objectURL;
+			img.width = 400;
+			img.height = 300;
+			document.body.appendChild(img);
+		}else{
+			
+			var reader = new FileReader();
+	        reader.onload = function() {
+	              var content = document.getElementById("content");
+	              content.textContent = reader.result;
+	         };
+	         reader.onerror = function(evt) {
+	              alert(evt.target.error.code);
+	          };
+	         reader.readAsText(this.files[0], "UTF-8");
+		}
+	});
+}
+</script>
+</head>
+<body>
+<input type="file" id="file"/><br/>
+<textarea rows="10" cols="40" id="content"></textarea><br/>
+<span id="info"></span>
+</body>
+</html>

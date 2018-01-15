@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var target = { name: 'lee'};
+
+var handler = {};
+var proxy = new Proxy(target, handler);
+proxy.age = 27;
+
+console.log(proxy.name, proxy.age);
+console.log(target.name, target.age);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

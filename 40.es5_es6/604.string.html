@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+console.log('z'.repeat(6));//zzzzzz
+
+
+var s = 'hello world';
+s.includes('hello'); //true
+
+
+var s = 'hello world';
+s.includes('hello'); //true
+
+
+var name = 'Lee', age = 27;
+var template = `Hello! my name is ${name}, ${age} years old`;
+console.log(template);// 'Hello! my name is Lee, 27 years old'
+
+
+function tag(strings, ...values){ 
+	console.log(strings);
+	console.log(values);
+	return 	strings[0] + strings[1] + (values[0] + values[1]); 
+} 
+var a=10, b=20;
+var temp = tag `hello ${a} world ${b}`; // 'hello world 30'
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

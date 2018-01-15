@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Midia Query</title>
+<style type="text/css">
+	div{
+		border: 1px solid #000;
+		height: 500px;
+		width : 100%;
+		background-color: #000;
+	}
+	@media all and (max-width:600px){
+		div{
+			background-color: #ff0;
+			
+			width : 400px;
+		}
+	}
+	
+	@media all and (min-width:601px) and (max-width:800px){
+		div{
+			background-color: #f00;
+			width : 600px;
+		}
+	}
+	@media all and (min-width:801px){
+		div{
+			background-color: #00f;
+			width : 800px;
+		}
+	}
+
+</style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

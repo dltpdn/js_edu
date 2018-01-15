@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle    = '#00F';
+	ctx.font         = 'Italic 30px Sans-Serif';
+	ctx.textBaseline = 'Top';
+	ctx.fillText  ('Hello world!', 40, 100);
+
+	ctx.font         = 'Bold 30px Sans-Serif';
+	ctx.strokeText('Hello world!', 40, 50);
+
+}
+
+</script>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>

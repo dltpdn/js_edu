@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle = "#00f";
+	ctx.strokeStyle = "#f00";
+	ctx.shadowOffsetX = 15;
+	ctx.shadowOffsetY = 15;
+	ctx.shadowBlur = 3;
+	ctx.shadowColor = "#0f0";
+	ctx.fillRect(10, 10, 100, 100);
+	ctx.strokeRect(9, 9, 101, 101);
+	
+}
+</script>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>

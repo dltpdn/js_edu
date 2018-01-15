@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+let map = new Map();
+map.set("name", 'lee');
+map.set("age", 27);
+map.size;  // 2
+
+for (var [key, value] of map) {
+  console.log(key + " = " + value);
+}
+
+map.has("name"); // true
+map.get("age"); // 27
+
+map.delete("age"); //true
+map.size; //1
+map.clear();
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

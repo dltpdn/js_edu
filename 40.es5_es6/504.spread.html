@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function f(a, b){ //old style
+	return a + b;
+}
+var array = [2, 3];
+f(array[0], array[1]); // 5
+f.apply(null, array);//5
+
+
+
+function f(a, b){  //ES6 style
+	return a + b;
+}
+var array = [2, 3];
+f(...array);//5
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

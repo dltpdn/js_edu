@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('button').click(function(){
+		var id = $("input:text").val();
+		var $id = $('#'+id); 
+		if($id.attr('checked')){
+			$id.removeAttr('checked');
+		}else{
+			$id.attr('checked', 'checked');
+		}
+	});
+	
+});
+</script>
+
+</head>
+<body>
+<input type="text" value="a"/><button>check</button>
+<hr/>
+<label for="a">A</label><input type="checkbox"  id="a"/>
+<label for="b">B</label><input type="checkbox" id="b"/>
+</body>
+</html>

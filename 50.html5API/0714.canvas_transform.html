@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	ctx.fillRect(0, 0, 50, 50);
+	
+	ctx.translate(100, 0);
+	ctx.fillRect(0, 0, 50, 50);
+	
+	ctx.translate(-25, 50);
+	ctx.scale(0.5, 0.5)
+	ctx.fillRect(10, 10, 50, 50);
+
+	ctx.translate(-50, 0);	
+	ctx.rotate(Math.PI / 4);
+	ctx.fillRect(0, 0, 50, 50);
+	
+}
+
+</script>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>

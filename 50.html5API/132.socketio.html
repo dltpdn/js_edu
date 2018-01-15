@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/socket.io.js"></script>
+<script type="text/javascript">
+var ws = null;
+window.onload = function() {
+	
+	var server = document.getElementById("server");
+	var connectBtn = document.getElementById("connect");
+	connectBtn.addEventListener('click', function(){
+		var url = server.value;
+		log("trying to connect :"+ url);
+		ws = io.connect(server.value);
+		console.log(ws);
+		if(ws){
+			log(ws.readyState);
+			ws.on('connect' , function(event) {
+				log("open");
+				ws.send("message to send");
+			});
+			ws.on('message', function(data) {
+				console.log(data);
+				log("msg:"+ data +"\n");
+			});
+			ws.on('disconnect', function(){
+				log("disconnect");
+			});
+		}else{
+			log("can not open!\n");
+		}
+	});
+	var disconnBtn = document.getElementById("disconnect");
+	disconnBtn.addEventListener('click', function(){
+		if(ws) ws.disconnect();
+	});
+	var sendBtn = document.getElementById("send");
+	var msg = document.getElementById("msg");
+	sendBtn.addEventListener("click", function(){
+		if(ws){
+			ws.send(msg.value);
+		}
+	});
+
+}
+var log = function(msg){
+	var log = document.getElementById("log");
+	log.value = log.value + msg + "\n";
+}
+
+</script>
+</head>
+<body>
+	<label for="server">Server:</label><input type="text" id="server" value="ws://localhost:8000"/>
+	<button id="connect">Connect</button><button id="disconnect">Disconnect</button><br/>
+	<label for="msg">Message:</label><input type="text" id="msg" value="Hello Websocket"/>
+	<button id="send">Send</button><br/>
+	<textarea id="log" rows="10" cols="50"></textarea>
+</body>
+</html>

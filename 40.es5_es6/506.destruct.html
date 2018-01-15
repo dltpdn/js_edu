@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var array = [1,2,3];
+var a = array[0];
+var b = array[1];
+var c = array[2];
+
+var x,y,z;
+[x,y,z] = array;// x:1, y:2, z :3
+
+var [aa, bb, cc] = array;// aa:1, bb:2, cc:3
+
+
+
+let [a, , b] = [1,2,3]; // a:1, b:3
+let [a, ...b] = [1,2,3,4,5]; //a:1, b:[2,3,4,5]
+let [a, b, c = 3] = [1,2]; // a:1, b:2, c:3
+function f([a,b,c=3] = [1,2,3]){ ... };
+f(undefined);
+
+
+
+var obj = {name:'lee', age:27};
+var name, age;
+({name, age} = obj);
+console.log(name, age); // 'lee', 27
+
+var a, b;
+({name:a, age:b} = obj);
+console.log(a, b); // 'lee', 27
+
+var {name:x, age:y} = obj;
+console.log(x, y); //'lee', 27
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

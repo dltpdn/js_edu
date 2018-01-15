@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<style type="text/css">
+#main{
+    width : 500px; height :300px;
+    margin : auto;
+}
+#main textarea{
+    display : block;
+    width :95%; height : 200px;
+}
+#main > #msg{
+    width : 80%;
+}
+</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+var url = "ws://localhost:1337";
+$(function(){
+    var ws = null;
+    var id = null;
+    $('#btnConnect').click(function(){
+        id = $('#id').val();
+        ws = new WebSocket(url);
+        ws.onopen = function(){
+            console.log('open');
+            var msg = JSON.stringify({'type': 'open', 'id': id});
+            console.log('send:' + msg);
+            ws.send(msg);
+            $('#id').attr('disabled', 'disabled');
+        }
+        ws.onmessage = function(evt){
+            console.log('msg:' + evt.data );
+            var msg = JSON.parse(evt.data);
+            var txt = "";
+            if(msg.type == "open"){
+                txt = msg.id + '님이 입장 하셨습니다.';
+            }else if(msg.type == "msg"){
+                txt = msg.id + ":" + msg.text;
+            }else if(msg.type == "close"){
+                txt = msg.id + '님이 나가셨습니다.';
+            }
+            $('#content').val( $('#content').val() +'\n' + txt );
+        }
+        ws.onclose = function(evt){
+            console.log('close');
+            $('#id').removeAttr('disabled');
+            var txt = 'connection closed.';
+            $('#content').val( $('#content').val() +'\n' + txt );
+
+        }
+        ws.onerror = function(evt){
+            console.log('err:' + evt);
+        }
+    });
+    $('#btnDisconn').click(function(){
+        ws.close();
+    });
+   
+    function send(txt){
+        var msg = {type :'msg', id: id, text : txt};
+        ws.send(JSON.stringify(msg));
+    }
+    $('#sendBtn').on('click', function(){
+        send($('#msg').val());
+    });
+    $('#msg').on('keydown', function(evt){
+        if(evt.keyCode == 13){
+            send($(this).val());
+            $(this).val('');
+        }
+    });
+});
+</script>
+</head>
+<body>
+<div id="main">
+    <label for="id">ID :</label><input type="text" id="id"/>
+    <button id="btnConnect">connect</button>
+    <button id="btnDisconn">Close</button>
+    <textarea id="content" readonly="readonly"></textarea>
+    <input type="text" id="msg"/>
+    <button id="btnSend">Send</button>
+</div>
+</body>
+</html>

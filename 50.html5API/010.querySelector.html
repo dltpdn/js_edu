@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var header = document.querySelector('h1');
+	var mydiv = document.querySelector('#mydiv');
+	var yourdiv = document.querySelector('.yourdiv');
+	header.style.backgroundColor = '#ff0';
+	mydiv.style.color = '#f00';
+	yourdiv.style.color = '#0f0';
+	
+	
+	var headers = document.querySelectorAll('h1');
+	for(var i=0; i < headers.length; i++){
+		headers[i].style.color = '#00f';
+	}
+}
+</script>
+</head>
+<body>
+	<h1>This is Header</h1>
+	<h1>This is Header2</h1>
+	<div id="mydiv">This is mydiv</div>
+	<div class="yourdiv">This is mydiv class</div>
+</body>
+</html>

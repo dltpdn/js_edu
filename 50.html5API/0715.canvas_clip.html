@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	ctx.save();
+	ctx.beginPath();
+	ctx.arc(100, 60,60, 0,  Math.PI *2,true );
+	ctx.clip()
+	
+	ctx.beginPath();
+	ctx.fillStyle="#f00";
+	ctx.arc(120, 90, 60,0, Math.PI*2, true);
+	ctx.fill();
+		
+	ctx.beginPath();
+	ctx.fillStyle="#00f";
+	ctx.arc(140, 30, 60,0, Math.PI*2, true);
+	ctx.fill();
+	
+	ctx.restore();
+	ctx.beginPath();
+	ctx.arc(100, 60,60, 0,  Math.PI *2,true );
+	ctx.lineWidth=3;
+	ctx.stroke();
+	
+	
+
+}
+
+</script>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>

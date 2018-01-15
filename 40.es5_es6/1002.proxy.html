@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var target = { name: 'kim', age : 27};
+var handler = {
+	set: function(target, property, value, receiver){
+		if(property === 'name'){
+			target[property] = 'Mr.' + value;
+		}else{
+			target[property] = value;
+		}
+	},
+	get : function(target, property, receiver){
+		if(property === 'age'){
+			return target[property] - 5;
+		}else{
+			return target[property];
+		}
+	}
+};
+var proxy = new Proxy(target, handler);
+proxy.name = 'Lee';
+console.log(proxy.name, proxy.age);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

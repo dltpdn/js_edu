@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>CSS | Dropdown Menu</title>
+<style>
+#menu ul {
+	list-style: none;
+}
+
+#menu ul li {
+	float: left;
+	padding: 5px;
+	border: 1px solid #000;
+}
+
+#menu ul li:hover>ul {
+	display: block;
+}
+
+#menu ul ul {
+	display: none;
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+}
+
+#menu ul ul li {
+	float: none;
+	margin: 0px;
+	padding: 0px;
+}
+</style>
+</head>
+<body>
+
+	<div id="menu">
+		<ul>
+			<li>Menu 1
+				<ul>
+					<li>Menu 1-1</li>
+				</ul>
+			</li>
+			<li>Menu 2
+				<ul>
+					<li>Menu 2-1</li>
+					<li>Menu 2-2</li>
+				</ul>
+			</li>
+			<li>Menu 3
+				<ul>
+					<li>Menu 3-1</li>
+				</ul>
+			</li>
+			<li>Menu 4
+				<ul>
+					<li>Menu 4-1</li>
+					<li>Menu 4-2</li>
+				</ul>
+			</li>
+			<li>Menu 5
+				<ul>
+					<li>Menu 5-1</li>
+					<li>Menu 5-2</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>

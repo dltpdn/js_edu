@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+function plus(a, b){
+	if(a>0 && b > 0){
+		return a +b;
+	}else{
+		//return -1;
+		//throw {code : -1, msg:"must grater than 0"};
+		throw new Error("must grater than 0");
+	}
+}
+
+try{
+	var r = plus(10, -20);
+	console.log("success, result", r * 3.14 / 100 * 365);
+}catch(e){
+	console.log('error', e.code, e.message);
+}
+console.log("end of program.");
+</script>
+</head>
+<body>
+
+</body>
+</html>

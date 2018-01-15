@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+
+    context.beginPath();
+    context.moveTo(100, 100); // line 1
+    context.lineTo(150, 50); // line 1
+    context.lineTo(200, 100); // line 1
+    context.lineWidth = 25;
+    context.lineJoin = "round";
+    context.lineCap = "round";
+    context.stroke();
+ 
+  
+};
+</script>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+</body>
+</html>

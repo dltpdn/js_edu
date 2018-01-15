@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var start = document.querySelector('#start');
+	var stop =  document.querySelector('#stop');
+	var audioCtx = new AudioContext();
+	var source;
+	start.onclick = function(){
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', 'media/sensitive.mp3', true);
+		xhr.responseType = 'arraybuffer';
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				audioCtx.decodeAudioData(xhr.response, function(buffer){
+					source = audioCtx.createBufferSource();
+					source.buffer = buffer;
+					source.connect(audioCtx.destination);
+					source.start(0);
+				});
+			} 
+		}
+		xhr.send();
+	}
+	stop.onclick = function(){
+		source.stop(0);
+	}
+}
+
+</script>
+</head>
+<body>
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+</body>
+</html>

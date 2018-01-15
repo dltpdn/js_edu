@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html;charset=UTF-8">
+<script type="text/javascript">
+var cnt = 0;
+var makeWorker = function(){
+	
+	var tmp = document.createElement('span');
+	var worker = new Worker("js/worker.js");
+	
+	worker.postMessage(document.getElementById("start_value").value);
+	worker.onmessage = function(event){
+		console.log(event.data);
+		tmp.innerHTML =event.data;
+	};
+	worker.onerror = function(event){
+		tmp.innerHTML = " Error:" + event.message;
+	};
+	var stopBtn = document.createElement("button");
+	stopBtn.innerHTML ='Stop';
+	stopBtn.addEventListener('click', function(){
+		if(worker) worker.terminate();
+		worker = null;
+	});
+	var result = document.getElementById('result'); 
+	var cntEl = document.createElement('span');
+	cntEl.innerHTML = "Worker-"+cnt++ +":";
+	result.appendChild(cntEl);
+	result.appendChild(tmp);
+	result.appendChild(stopBtn);
+	result.appendChild(document.createElement('br'));
+}
+window.onload=function(){
+	document.getElementById("start").addEventListener("click", function(){
+		makeWorker();
+	});
+}
+</script>
+</head>
+<body>
+	<div>
+		<span id="tmp">value</span><input id="start_value" value="1000"/>
+	</div>
+	<div>
+		<button id="start">Start Workder</button>
+		<button id="stop">Stop Worker</button>
+	</div>
+	<div id="result">
+	</div>
+</body>
+</html>

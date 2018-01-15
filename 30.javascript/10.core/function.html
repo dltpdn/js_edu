@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+//console.log('j', j);
+var i;
+function f1(){
+	console.log("f1()");
+}
+var f2;
+var f3;
+console.log('i', i);
+//var i = 10;// var i; i=10; 
+i = 10;
+//f0();
+
+f1();
+f2();
+f3();
+
+f2 = function(){  // var f2; f2 = function....
+	console.log('f2()');
+};
+
+f3 = new Function("console.log('f3');");
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

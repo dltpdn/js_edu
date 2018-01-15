@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+var g = "global";
+console.log(g);
+
+function fn_g(){
+	var x = "local";
+	console.log(x, g);
+	
+	function fn_l(){
+		var y = "inner";
+		var x = "inner2";
+		console.log(y, x, g);
+		debugger;
+	}
+	fn_l();
+}
+fn_g();
+
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

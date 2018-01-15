@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+var obj = { name: 'Lee', age :27};
+
+console.log(obj.name);
+console.log(obj["name"]);
+
+var x = "name";
+console.log(obj[x]);
+
+console.log( 'name' in obj)	;
+console.log( 'height' in obj);
+
+for(var y in obj){
+	console.log(y, obj[y]);
+}
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

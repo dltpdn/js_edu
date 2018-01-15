@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+0 === -0; // true
+Object.is(0, -0); //false
+NaN === NaN; //false
+Object.is(NaN, NaN); //true
+NaN === 0/0; //false
+Object.is(NaN, 0/0); true
+
+
+
+var obj = {name:'lee'};
+var obj2 = {age : 27};
+Object.assign(obj, obj2);
+obj.name; // 'lee'
+obj.age; // 27 
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

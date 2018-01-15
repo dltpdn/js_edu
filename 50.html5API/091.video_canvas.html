@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Video</title>
+<style type="text/css">
+canvas{
+		border: 1px solid #000;
+}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	var video = document.getElementById("video");
+	var canvas = document.getElementById("canvas");
+	canvas.addEventListener('click', function(evt){
+		var ctx = canvas.getContext('2d');
+		ctx.drawImage(video, 0, 0, 240, 120);
+		ctx.drawImage(video, 100, 50, 150, 150);
+		ctx.drawImage(video, 50, 0, 100, 100, 200, 150, 100, 100);
+	});
+}
+</script>
+</head>
+<body>
+<video width="320" height="240" controls="controls" poster="img/poster.jpg" id="video">
+	<source src="media/BigBuck.m4v" type="video/mp4"></source>
+	<source src="media/BigBuck.theora.ogv" type="video/ogg"></source>
+	<source src="media/BigBuck.webm" type="video/webm"></source>
+	Your browser does not support the video tag.
+</video>
+
+<canvas id="canvas" width="320" height="240"></canvas>
+</body>
+</html>

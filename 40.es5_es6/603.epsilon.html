@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+console.log(0.1 + 0.2);// 0.30000000000000004
+console.log(0.1 + 0.2 == 0.3);// false
+
+function epsilonEqual(a, b){
+	return Math.abs(a-b) < Number.EPSILON;
+}
+console.log(epsilonEqual(0.1+0.2, 0.3));//true
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

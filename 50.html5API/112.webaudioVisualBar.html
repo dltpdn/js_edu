@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var context = new AudioContext();
+	var request = new XMLHttpRequest();
+	
+	request.onload = function(){
+		context.decodeAudioData(request.response, function(buffer){
+			var source = context.createBufferSource();
+			var analyser = context.createAnalyser();
+			analyser.fftSize = 256;
+			source.buffer = buffer;
+			source.connect(analyser);
+			analyser.connect(context.destination);
+			source.start(0);
+			
+			var freqData = new Uint8Array(analyser.frequencyBinCount);
+			var canvas = document.getElementById('canvas');
+			var canvasCtx = canvas.getContext('2d');
+			var width = canvas.width;
+			var height = canvas.height;
+			
+			function draw(){
+				analyser.getByteFrequencyData(freqData);
+				canvasCtx.clearRect(0,0,  width, height);
+				
+				var barWidth = width/freqData.length;
+				var x = 0;
+				for(var i = 0; i <freqData.length; i++){
+					var barHeight = freqData[i];
+					var y = height - barHeight;
+					x += barWidth + 1;
+					
+					canvasCtx.fillStyle = 'rgb(' + barHeight + ', 0, 0)'
+					canvasCtx.fillRect(x, y, barWidth, barHeight);
+				}
+				requestAnimationFrame(draw);
+			}
+			draw();
+			
+		});
+	}
+	request.open('GET', 'media/sensitive.mp3', true);
+	request.responseType = 'arraybuffer';
+	request.send();
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="800" height="300"></canvas>
+</body>
+</html>

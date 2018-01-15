@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Canvas Clock</title>
+<script type="text/javascript">
+	var canvas = null;
+	var ctx = null;
+	var context = null;
+	window.onload = function() {
+		canvas = document.getElementById('canvas');
+		ctx = canvas.getContext('2d');
+		context = ctx;
+		init();
+	}
+	function init() {
+		context.translate(canvas.width / 2, canvas.height / 2);
+		drawBackground();
+	}
+
+	function drawBackground() {
+		setTimeout(drawBackground);
+		var clockImage = new Image();
+		clockImage.src = './img/clockBG.png';
+		clockImage.onload  = function(){
+			context.drawImage(clockImage, -200 ,-200, 400, 400);
+			drawShapes();
+		}
+	}
+	function drawShapes(){
+		drawCenter();
+		writeBrandName();
+		var theDate = new Date();
+		drawHourHand(theDate);
+		drawMinuteHand(theDate);
+		drawSecondHand(theDate);
+	}
+	function drawCenter(){
+		ctx.beginPath();
+		ctx.moveTo(0, 0);
+		ctx.arc(0, 0, 10, 0, 2 * Math.PI, true);
+		ctx.fill();
+		ctx.closePath();
+	}
+
+	function drawHand(size, thickness) {
+		thickness = thickness || 4;
+
+		context.beginPath();
+		/*	   context.moveTo(0,0); // center
+		 context.lineTo(thickness *-1, -10);
+		 context.lineTo(0, size * -1);
+		 context.lineTo(thickness,-10);
+		 context.lineTo(0,0);
+		 context.fill(); */
+		context.beginPath();
+		context.moveTo(0, 0);
+		context.fillRect(0, 0, -thickness, -size);
+
+	}
+	function drawHourHand(theDate) {
+		var hours = theDate.getHours() + theDate.getMinutes() / 60;
+		var degrees = (hours * 360 / 12) % 360;
+
+		context.save();
+		context.fillStyle = 'black';
+		context.rotate(degreesToRadians(degrees));
+		drawHand(110, 7);
+		context.restore();
+	}
+
+	function drawMinuteHand(theDate) {
+		var minutes = theDate.getMinutes() + theDate.getSeconds() / 60;
+		context.save();
+		context.fillStyle = 'black';
+		context.rotate(degreesToRadians(minutes * 6));
+		drawHand(130);
+		context.restore();
+	}
+
+	function drawSecondHand(theDate) {
+		context.save();
+		context.fillStyle = 'red';
+		var seconds = theDate.getSeconds();
+		context.rotate(degreesToRadians(seconds * 6));
+		drawHand(150);
+		context.restore();
+	}
+	function degreesToRadians(degrees) {
+		return (Math.PI / 180) * degrees
+	}
+	function writeBrandName() {
+		context.lineWidth = 1;
+		context.font = "25pt Helvetica";
+		var brandName = '솔이 울이';
+		var brandNameSize = context.measureText(brandName);
+		context.strokeText(brandName, 0 - brandNameSize.width / 2, -40);
+	}
+
+</script>
+</head>
+<body>
+	<canvas id="canvas" width="400" height="400"></canvas>
+</body>
+</html>

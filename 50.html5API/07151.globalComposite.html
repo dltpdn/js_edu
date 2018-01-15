@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>Canvas-globalCompositOperation</title>
+<script type="text/javascript">
+window.onload = function(){
+	var canvas = document.getElementById('canvas');
+	var ctx = canvas.getContext('2d');
+	ctx.fillStyle = '#f00';
+	ctx.fillRect(10,10, 150, 150);
+	ctx.fillStyle = '#00f';
+	ctx.globalCompositeOperation = "destination-over";
+	ctx.fillRect(100, 100, 150, 150 );
+}
+
+</script>
+</head>
+<body>
+<canvas id="canvas" width="300" height="300"></canvas>
+</body>
+</html>

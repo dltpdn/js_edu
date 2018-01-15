@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>일기예보</title>
+<script type="text/javascript" src="./js/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+$( function(){
+	$("#get_kma").click( load_kma );
+});
+function load_kma(){
+	var url="./jsp/proxy_kma.jsp";
+	$.get( url, handle_kma );
+}
+function handle_kma( data ){
+	var ctg = $("category", data).text();
+	//alert( ctg );
+	$("#result").append( "<h2>지역: "+ctg+"</h2>" );//제목 등록
+	var selector = "data";// 전체 예보정보 추출
+	//var selector = "data:has(day:contains(0))";// 오늘( <day>0</day>) 예보정보만 추출
+	$( selector , data).each( handle_data );
+}
+function handle_data(){
+	// this는 처리 대상 태그 객체. 여기서는 data 태그.
+	var hour = $("hour", this).text();
+	var temp = $("temp", this).text();
+	var wfKor = $("wfKor", this).text();
+	$("#result").append( 
+			"<div>시간: "+hour+", 온도: "+temp+", 날씨: "+wfKor+"</div>" );
+}
+</script>
+</head>
+<body>
+
+	<button id="get_kma">일기예보보기</button>
+	<div id="result"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

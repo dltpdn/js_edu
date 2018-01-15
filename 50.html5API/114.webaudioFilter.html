@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	var start = document.querySelector('#start');
+	var stop =  document.querySelector('#stop');
+	var chkFilter = document.querySelector('#chkFilter');
+	var frequency = document.querySelector('#frequency');
+	var hz = document.querySelector('#hz');
+	
+	var audioCtx = new AudioContext();
+	var source;
+	var filter;
+	start.onclick = function(){
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', 'media/sensitive.mp3', true);
+		xhr.responseType = 'arraybuffer';
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				audioCtx.decodeAudioData(xhr.response, function(buffer){
+					source = audioCtx.createBufferSource();
+					source.buffer = buffer;
+					filter = audioCtx.createBiquadFilter();
+					source.connect(filter);
+					filter.connect(audioCtx.destination);
+					filter.type = 'lowpass';
+					filter.frequency.value = 400;
+					source.start(0);
+				});
+			} 
+		}
+		
+		xhr.send();
+	}
+	stop.onclick = function(){
+		source.stop(0);
+	}
+	chkFilter.onclick = function() {
+		source.disconnect(0);
+		filter.disconnect(0);
+		if(this.checked){
+			source.connect(filter);
+			filter.connect(audioCtx.destination);
+		}else{
+			source.connect(audioCtx.destination);
+		}
+	}
+
+	frequency.oninput = function(){
+		filter.frequency.value = this.value;
+		hz.innerHTML = this.value + 'Hz';
+	}
+}
+
+</script>
+</head>
+<body>
+<button id="start">Start</button>
+<button id="stop">Stop</button><br/>
+<label>Low Pass Filter</label><input type="checkbox" id="chkFilter" checked="checked"><br/>
+<input type="range" id="frequency" min="10" max="4000" value="400"><label id="hz">400Hz</label>
+
+</body>
+</html>

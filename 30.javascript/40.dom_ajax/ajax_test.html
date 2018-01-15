@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+#url{
+	width: 500px;
+}
+#res{
+height: 500px;
+overflow: auto;
+}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var url = document.querySelector('#url');
+	var btn = document.querySelector('#btn');
+	var res = document.querySelector('#res');
+	btn.onclick=function(){
+		var xhr = new XMLHttpRequest();
+		try{
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4){
+				
+					res.textContent = xhr.responseText;
+				
+			}
+		}
+		xhr.open('GET', encodeURI(url.value), true);
+		xhr.send();
+		}catch(e){
+			res.textContent = e.message;
+		}
+	}
+}
+
+</script>
+</head>
+<body>
+<input type="text" id="url" />
+<button id="btn">send</button>
+<hr>
+<div id="res"></div>
+</body>
+</html>

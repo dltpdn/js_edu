@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.alert{
+	background: #f00;
+}</style>
+<script type="text/javascript">
+window.onload = function(){
+	var createBtn = document.getElementById("create-button");
+	createBtn.addEventListener('click', function(){
+		var newBtn = document.createElement("button");
+		newBtn.setAttribute("class", "alert");
+		newBtn.appendChild(document.createTextNode("I am new"));
+		document.getElementsByTagName("body")[0].appendChild(newBtn);
+	}, true);
+	
+	var remBtn = document.getElementById("remove-button");
+	remBtn.addEventListener('click', function(){
+		var btns = document.getElementsByTagName('button');
+		var body = document.getElementsByTagName('body')[0];
+		for(var i=0; i < btns.length;i++){
+			var id = btns[i].getAttribute('id');
+			if(id != "create-button" && id !=  "remove-button"){
+				body.removeChild(btns[i]);
+			}
+		}
+	}, true);
+}
+</script>
+</head>
+<body>
+<button id="create-button">createButton</button>
+<button id="remove-button">remove Button</button>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var obj = { name: 'lee', getName: function(){ return this.name;}};
+obj.getName(); // 'lee'
+
+var obj2 = {name: 'lee', getName: ()=>this.name};
+obj2.getName(); //undefined
+
+var obj3 = {name:'lee', getName:function(){ 
+					return (()=>this.name)();
+}}
+obj3.getName(); // 'lee'
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+Array.from([1, 2, 3], x => x + x);  // [2, 4, 6]
+
+Array.from({length:5}, (val, idx)=>{
+	console.log(val, idx); 
+	return idx
+});
+/* 
+undefined 0
+undefined 1
+undefined 2
+undefined 3
+undefined 4
+[ 0, 1, 2, 3, 4 ]
+*/
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

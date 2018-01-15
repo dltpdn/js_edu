@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	border-width: 15px;
+	width: 250px;
+	padding: 10px 20px;
+}
+
+#round {
+	-moz-border-image: url(../img/border.png) 30 30 round; /* Firefox */
+	-webkit-border-image: url(../img/border.png) 30 30 round;	/* Safari and Chrome */
+	-o-border-image: url(../img/border.png) 30 30 round; /* Opera */
+	border-image: url(../img/border.png) 30 30 round;
+}
+
+#stretch {
+	-moz-border-image: url(../img/border.png) 30 30 stretch; /* Firefox */
+	-webkit-border-image: url(../img/border.png) 30 30 stretch; /* Safari and Chrome */
+	-o-border-image: url(../img/border.png) 30 30 stretch; /* Opera */
+	border-image: url(../img/border.png) 30 30 stretch;
+}
+</style>
+</head>
+<body>
+	<div id="round">Here, the image is tiled (repeated) to fill the	area.</div>
+	<br />
+	<div id="stretch">Here, the image is stretched to fill the area.</div>
+
+	<p>Here is the image used:</p>
+	<img src="../img/border.png" />
+</body>
+</html>

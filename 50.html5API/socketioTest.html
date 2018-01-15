@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/socket.io.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	var socket = io.connect('ws://localhost:9999');
+	console.log(socket);
+	socket.on('connect', function(){
+		alert(socket.socket.connected);
+	})
+	var room = prompt('방 이름을 입력하세요.');
+	socket.emit('join', room);
+	
+	socket.on('message', function(data){
+		document.getElementById('log').value += data +"\n";
+	});
+	document.getElementById('btn').onclick = function(){
+		var msg = document.getElementById('message').value;
+		socket.emit('message', msg);
+	}
+}
+</script>
+</head>
+<body>
+	<input id="message">
+	<button id="btn">Emit</button><br>
+	<textarea id="log"></textarea>
+	
+</body>
+</html>

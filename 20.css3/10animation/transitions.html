@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	width: 100px;
+	height: 100px;
+	border: 1px solid #000;
+	-moz-transition: width 2s, height 2s, -moz-transform 2s;	/* Firefox 4 */
+	-webkit-transition: width 2s, height 2s, -webkit-transform 2s;	/* Safari and Chrome */
+	-o-transition: width 2s, height 2s, -o-transform 2s; /* Opera */
+	transition: width 2s, height 2s, transform 2s;
+}
+
+div:hover {
+	width: 200px;
+	height: 200px;
+	transform: rotate(180deg);
+	-moz-transform: rotate(180deg); /* Firefox 4 */
+	-webkit-transform: rotate(180deg); /* Safari and Chrome */
+	-o-transform: rotate(180deg); /* Opera */
+}
+</style>
+</head>
+<body>
+	<div>transition</div>
+</body>
+</html>

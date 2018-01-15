@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	Object.seal = function(obj) {
+		var props = Object.getOwnPropertyNames(obj);
+
+		for (var i = 0; i < props.length; i++) {
+			var desc = Object.getOwnPropertyDescriptor(obj, props[i]);
+
+			desc.configurable = false;
+			Object.defineProperty(obj, props[i], desc);
+		}
+
+		return Object.preventExtensions(obj);
+	};
+</script>
+</head>
+<body>
+
+</body>
+</html>

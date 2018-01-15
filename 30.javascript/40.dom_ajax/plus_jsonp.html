@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JsonP Plus-Example</title>
+<script type="text/javascript">
+function execute(){
+	var p1 = document.getElementById('p1').value;
+	var p2 = document.getElementById('p2').value;
+	var url = '/plus_jsonP?p1='+p1+'&p2='+p2+"&callback=res" ;
+	
+	var script = document.createElement('script');
+	script.setAttribute('src', url);
+	document.head.appendChild(script);
+}
+function res(data){
+	document.getElementById('res').value = data.res;
+}
+
+</script>
+</head>
+<body>
+<h1>Plus JsonP</h1>	
+<input type="text" id="p1"/> +
+<input type="text" id="p2">
+<input type="button"  id="exe" value="=" onclick="execute()">
+<input type="text" id="res" readonly="readonly"/>
+</body>
+</html>

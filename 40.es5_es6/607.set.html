@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var myset = new Set();
+myset.add(1);
+myset.add(5);
+myset.add('hello');
+var obj = {name:'lee'};
+myset.add(obj);
+
+myset.has(1); // true
+myset.has(3); // false
+myset.has(5); // true
+myset.has("hello"); //true
+myset.size; //4
+
+myset.delete(5);  // true
+myset.has(5); // false
+myset.size; //3
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

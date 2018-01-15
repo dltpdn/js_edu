@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#btn').click(function(){
+		$('#result').load('jsp/realrank_proxy.jsp #realrank');
+	});
+});
+
+</script>
+</head>
+<body>
+<h1>네이버 실시간 급상승 검색어</h1>
+<button id="btn">가져오기</button>
+<div id="result"></div>
+</body>
+</html>

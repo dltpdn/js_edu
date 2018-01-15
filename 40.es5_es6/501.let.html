@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var a = 1;
+	var a = 10; // OK
+	console.log(a); // 10
+	let
+	b = 1;
+	let
+	b = 10; // Error
+
+	function f() {
+		var x = 10;
+		let
+		y = 20;
+	}
+	console.log(x); // 10
+	console.log(y); // Error, not defined
+</script>
+</head>
+<body>
+
+</body>
+</html>

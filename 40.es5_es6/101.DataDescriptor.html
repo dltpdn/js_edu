@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//"use strict"
+var obj = {};
+Object.defineProperty(obj, 'name', {
+									value :'lee',
+									writable : false,
+									enumerable : true,//false
+});
+
+obj.name; // 'lee'
+obj.name = 'kim'; // no effect or error in strict mode
+delete obj.name; // false
+
+for(var key in obj){   //no loop execution
+   console.log(key);
+}
+
+var desc = Object.getOwnPropertyDescriptor(obj, 'name');
+console.log(desc);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var sym1 = Symbol();
+var sym2 = Symbol();
+sym1 === sym2; //false
+var obj = {[sym1] : 1};
+obj[sym1];// 1
+
+Object.getOwnPropertySymbos(obj);// Symbol()
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
