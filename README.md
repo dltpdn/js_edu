@@ -5,21 +5,21 @@
 
 즐겁고 유익한 교육이 되기를 바라며, 교육 중 해소하지 못한 질문이나 그 밖에 다른 이유로 연락이 필요할 경우 아래의 연락처로 연락 바랍니다.
 
-## 강사 소개 (About instructor)
+## Instructor)
 * [Profile](https://drive.google.com/file/d/0B3FcLTiIcKwOZExsSEg4QnpRcWs/view?usp=sharing) 
 * Contact
 	* E-mail : dltpdn@gmail.com
 	* Blog : http://blog.xcoda.net
 
-## 수업에 필요한 S/W 다운로드 링크
+## S/W Downlad Links
 * NodeJs (https://nodejs.org)
 * VS Code (https://code.visualstudio.com/)
 * Chrome Browser (http://chrome.google.com )
 * Firefox Borwser (http://mozilla.com)
 
-## 참고 링크
+## Reference Links
 * Event Loop Visualizationg [http://latentflip.com/loupe]
 * [w3schools.com, javascript reference](https://www.w3schools.com/jsref/default.asp)
 
-## Document
+## Documents
 * [Wiki Pages](https://github.com/dltpdn/js_edu/wiki)
