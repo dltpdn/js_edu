@@ -5,7 +5,7 @@
 
 즐겁고 유익한 교육이 되기를 바라며, 교육 중 해소하지 못한 질문이나 그 밖에 다른 이유로 연락이 필요할 경우 아래의 연락처로 연락 바랍니다.
 
-## Instructor)
+## Instructor
 * [Profile](https://drive.google.com/file/d/0B3FcLTiIcKwOZExsSEg4QnpRcWs/view?usp=sharing) 
 * Contact
 	* E-mail : dltpdn@gmail.com
