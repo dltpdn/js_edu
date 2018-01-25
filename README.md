@@ -22,6 +22,9 @@
 ## Reference Links
 * Event Loop Visualizationg [http://latentflip.com/loupe]
 * [w3schools.com, javascript reference](https://www.w3schools.com/jsref/default.asp)
+* Chrome DevTool
+  * Course (http://discover-devtools.codeschool.com/)
+  * Document (https://developers.google.com/web/tools/chrome-devtools/)
 
 ## Documents
 * [Wiki Pages](https://github.com/dltpdn/js_edu/wiki)
