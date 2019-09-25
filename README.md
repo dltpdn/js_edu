@@ -18,10 +18,16 @@
 * VS Code (https://code.visualstudio.com/)
 * Chrome Browser (http://chrome.google.com )
 * Firefox Borwser (http://mozilla.com)
+* Eclipse for JavaEE Developer (http://www.eclipse.org/downloads/eclipse-packages/)
+* Apache Tomcat (https://tomcat.apache.org/download-90.cgi)
+* JDK (http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html)
 
 ## Reference Links
 * Event Loop Visualizationg [http://latentflip.com/loupe]
 * [w3schools.com, javascript reference](https://www.w3schools.com/jsref/default.asp)
+* Chrome DevTool
+  * Course (http://discover-devtools.codeschool.com/)
+  * Document (https://developers.google.com/web/tools/chrome-devtools/)
 
 ## Documents
 * [Wiki Pages](https://github.com/dltpdn/js_edu/wiki)
