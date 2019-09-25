@@ -6,7 +6,8 @@
 function execute(){
 	var p1 = document.getElementById('p1').value;
 	var p2 = document.getElementById('p2').value;
-	var url = '/plus_jsonP?p1='+p1+'&p2='+p2+"&callback=res" ;
+	//var url = '/plus_jsonP?p1='+p1+'&p2='+p2+"&callback=res" ;
+	var url = './server/plus_jsonp.jsp?p1='+p1+'&p2='+p2+"&callback=res" ;
 	
 	var script = document.createElement('script');
 	script.setAttribute('src', url);
